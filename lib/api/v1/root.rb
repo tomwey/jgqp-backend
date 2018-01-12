@@ -25,7 +25,7 @@ module API
         end
       end
       
-      mount API::V1::Welcome
+      mount API::V1::GameAPI
       # mount API::V1::PayAPI
       # mount API::V1::BannersAPI
       # mount API::V1::UtilsAPI
