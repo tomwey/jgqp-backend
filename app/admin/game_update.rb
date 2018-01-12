@@ -3,7 +3,7 @@ ActiveAdmin.register GameUpdate do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :version, :os, :game_id, :search_paths, :package_file, :change_log
+permit_params :version, :os, :game_id, :search_paths, :package_file, :change_log, :opened
 #
 # or
 #
@@ -36,6 +36,7 @@ form do |f|
     # f.input :change_log, as: :text, label: '版本更新日志', rows: 10, cols: 30#, input_html: { class: 'redactor' }, placeholder: '网页内容，支持图文混排', hint: '网页内容，支持图文混排'
     f.input :package_file, hint: '格式为zip或rar'
     f.input :search_paths,as: :text, rows: 6, placeholder: '客户端路径，多个路劲用英文逗号或回车分隔'
+    f.input :opened, as: :boolean, label: '是否启用该版本'
     f.input :change_log, as: :text, input_html: { class: 'redactor' }, placeholder: '更新内容，支持图文混排', 
       hint: '更新内容，支持图文混排'
   end
