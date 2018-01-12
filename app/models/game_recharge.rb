@@ -1,17 +1,17 @@
 require 'rest-client'
 class GameRecharge < ActiveRecord::Base
-  validates :game_id, :uid, :money, :_money, :diamond, :recharge_desc, presence: true
+  validates :game_id, :uid, :money, :diamond, :recharge_desc, presence: true
   
   after_create :send_to_game_server
   def send_to_game_server
     
   end
   
-  def _money=(val)
-    self.money = (val * 100).to_i
+  def money_val=(val)
+    self.money = (val.to_f * 100).to_i
   end
   
-  def _money
+  def money_val
     self.money / 100.0
   end
   
