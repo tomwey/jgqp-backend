@@ -24,7 +24,25 @@ index do
   column :recharged_at
   column 'at', :created_at
   
-  actions
+  actions defaults: false do |o|
+    item "查看", [:admin, o]
+    
+    if o.recharged_at.blank?
+      item "充值到服务器", recharge_admin_game_recharge_path(o), method: :put, data: { confirm: '您确定吗？' }
+    end
+    item "编辑", edit_admin_game_recharge_path(o)
+    
+  end
+  
+end
+
+member_action :recharge, method: :put do
+  msg = resource.recharge! # ? '已上架' : '余额不足,上架失败'
+  if msg == '充值成功'
+    redirect_to collection_path, notice: '充值成功'
+  else
+    redirect_to collection_path, alert: msg
+  end
 end
 
 before_create do |o|
