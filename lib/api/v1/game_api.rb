@@ -30,7 +30,7 @@ module API
             version: params[:bv],
             engineVersion: GameConfig.game_engine_version,
             assets: {},
-            searchPaths: @update.search_paths.split('\n')
+            searchPaths: @update.search_paths.gsub(/\s+/, ',').split(',')
           }
         end # end update
         
