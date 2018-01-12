@@ -25,9 +25,9 @@ module API
           end
           
           {
-            packageUrl: @update.package_file.url,
+            packageUrl: @update.package_file.try(:url) || '',
             remoteManifestUrl: "http://47.104.163.199:8080/api/v1/game/update?code=#{params[:code]}&bv=#{params[:bv]}&os=#{params[:os]}",
-            version: params[:bv],
+            version: @update.version || params[:bv],
             engineVersion: GameConfig.game_engine_version,
             assets: {},
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(',')
@@ -37,8 +37,8 @@ module API
         desc '获取游戏服务器信息'
         params do
           requires :code, type: String, desc: '某个游戏代号'
-          requires :bv,   type: String, desc: '当前版本'
-          requires :os,   type: String, desc: '平台，ios或android' 
+          optional :bv,   type: String, desc: '当前版本'
+          optional :os,   type: String, desc: '平台，ios或android' 
         end
         get :server do
           { cname: GameConfig.server_cname, ip: GameConfig.server_ip, ports: GameConfig.server_ports }
