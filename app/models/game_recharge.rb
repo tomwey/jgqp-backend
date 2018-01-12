@@ -4,7 +4,18 @@ class GameRecharge < ActiveRecord::Base
   
   after_create :send_to_game_server
   def send_to_game_server
-    
+    resp = RestClient.get "#{SiteConfig.game_api_server}/Recharge", 
+                     { :params => { :user_id => self.uid,
+                                    :diamond => self.diamond
+                                  } 
+                     }
+    result = JSON.parse(resp)
+    if result['status'].to_i == 0
+      return true
+    else
+      errors.add(:base, result['msg'])
+      return false
+    end
   end
   
   def money_val=(val)
