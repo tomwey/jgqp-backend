@@ -13,6 +13,20 @@ permit_params :version, :os, :game_id, :search_paths, :package_file, :change_log
 #   permitted
 # end
 
+index do
+  selectable_column
+  column :version
+  column :os, sortable: false
+  column :search_paths, sortable: false
+  column :change_log, sortable: false do |o|
+    raw(o.change_log)
+  end
+  column 'at', :created_at
+  
+  actions
+end
+
+
 form do |f|
   f.semantic_errors
   f.inputs '基本信息' do

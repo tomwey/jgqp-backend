@@ -14,6 +14,21 @@ permit_params :name, :icon, :intro, :bundle_id, :code
 #   permitted
 # end
 
+index do
+  selectable_column
+  column :name, sortable: false
+  column :icon, sortable: false do |o|
+    image_tag o.icon.url(:large), size: '48x48'
+  end
+  column :bundle_id, sortable: false
+  column :code, sortable: false
+  column :intro, sortable: false
+  column 'at', :created_at
+  
+  actions
+end
+
+
 form do |f|
   f.semantic_errors
   f.inputs '基本信息' do
