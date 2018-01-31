@@ -41,7 +41,7 @@ module API
           optional :os,   type: String, desc: '平台，ios或android' 
         end
         get :server do
-          { cname: GameConfig.server_cname, ip: GameConfig.server_ip, ports: GameConfig.server_ports }
+          { cname: GameConfig.server_cname, ip: GameConfig.server_ip, ports: GameConfig.server_ports.split(',') }
         end # end server
         
       end # end resource
