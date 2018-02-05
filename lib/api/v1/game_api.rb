@@ -23,7 +23,7 @@ module API
             prefix = bv / 100.0
             prefix = '%.1f' % prefix
             
-            bv = prefix + '.' + suffix
+            bv = prefix + '.' + suffix.to_s
           end
           
           puts bv
