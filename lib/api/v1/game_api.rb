@@ -16,8 +16,20 @@ module API
             return render_error(4004, '不存在的游戏')
           end
           
+          bv = params[:bv]
+          unless bv.include? '.'
+            bv = bv.to_i
+            suffix = bv % 100
+            prefix = bv / 100.0
+            prefix = '%.1f' % prefix
+            
+            bv = prefix + '.' + suffix
+          end
+          
+          puts bv
+          
           @update = GameUpdate.where(game_id: game.id, opened: true)
-            .where('version >= ? and lower(os) = ?', params[:bv], params[:os].downcase)
+            .where('version >= ? and lower(os) = ?', bv, params[:os].downcase)
             .order('version desc').first
           
           if @update.blank?
@@ -30,7 +42,8 @@ module API
             version: @update.version || params[:bv],
             engineVersion: GameConfig.game_engine_version,
             assets: {},
-            searchPaths: @update.search_paths.gsub(/\s+/, ',').split(',')
+            searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
+            shield: GameConfig.is_app_approving_version
           }
         end # end update
         
