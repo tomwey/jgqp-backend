@@ -10,9 +10,9 @@ class AdminUser < ActiveRecord::Base
   end
   
   # 管理员
-  # def admin?
-  #   super_admin? || self.role.to_sym == :admin
-  # end
+  def admin?
+    super_admin? || SiteConfig.admin_managers.split(',').include?(self.email)
+  end
   #
   # # 站点编辑人员
   # def site_editor?
@@ -20,9 +20,9 @@ class AdminUser < ActiveRecord::Base
   # end
   #
   # # 市场人员
-  # def marketer?
-  #   admin? || self.role.to_sym == :marketer
-  # end
+  def marketer?
+    admin? || SiteConfig.market_managers.split(',').include?(self.email)#self.role.to_sym == :marketer
+  end
   #
   # # 限制使用人员
   # def limited_user?

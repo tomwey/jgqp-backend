@@ -13,6 +13,10 @@ class Ability
       can :update, AdminUser do |admin|
         admin.id == user.id
       end
+      
+      if user.marketer?
+        can :create, GameRecharge
+      end
     end
     
     # if user.super_admin?
