@@ -43,7 +43,7 @@ module API
             engineVersion: GameConfig.game_engine_version,
             assets: {},
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
-            shield: GameConfig.is_app_approving_version
+            shield: GameConfig.is_app_approving_version.to_i
           }
         end # end update
         
