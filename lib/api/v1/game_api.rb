@@ -63,7 +63,8 @@ module API
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
             shield: shield,
             md5: @update.file_md5 || '',
-            packageSize: @update.package_file.size
+            packageSize: @update.package_file.size,
+            updateDesc: @update.change_log
           }
           
         end # end update
