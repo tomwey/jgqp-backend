@@ -17,24 +17,36 @@
   
   window.GameService = {
     fetchData: function() {
-      $.ajax({
-        url: "http://172.31.181.80:8010/api/v1/internal/game_data",
-        type: 'GET',
-        success: function(re) {
-          console.log(re);
-          var total = re.proxyinfo[0].playercount;
-          $('#online-players').text(total);
-          setTimeout(function() {
-            GameService.fetchData();
-          }, 2000);
-        },
-        error: function(err) {
-          console.log(err);
-          setTimeout(function() {
-            GameService.fetchData();
-          }, 2000);
-        }
-      });
+      // $.ajax({
+      //   url: "http://172.31.181.80:8010/api/v1/internal/game_data",
+      //   type: 'GET',
+      //   success: function(re) {
+      //     console.log(re);
+      //     var total = re.proxyinfo[0].playercount;
+      //     $('#online-players').text(total);
+      //     setTimeout(function() {
+      //       GameService.fetchData();
+      //     }, 2000);
+      //   },
+      //   error: function(err) {
+      //     console.log(err);
+      //     setTimeout(function() {
+      //       GameService.fetchData();
+      //     }, 2000);
+      //   }
+      // });
+      <%
+      results = GameService.fetch_data
+      proxy_info = results["proxyinfo"][0]
+      player_count = proxy_info["playercount"]
+       %>
+       
+      var total = '<%= player_count %>';//re.proxyinfo[0].playercount;
+      $('#online-players').text(total);
+      
+      setTimeout(function() {
+        GameService.fetchData();
+      }, 2000);
     },
   };
   
