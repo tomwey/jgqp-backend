@@ -47,15 +47,25 @@ module API
             return render_error(4004, '没有更新')
           end
           
+          filename = File.basename(@update.package_file.path)
+          assets = {}
+          assets[filename] = {
+            compressed: true,
+            md5: @update.file_md5 || ''
+          }
+          
           {
             packageUrl: @update.package_file.try(:url) || '',
             remoteManifestUrl: "http://47.104.163.199:8080/api/v1/game/update?code=#{params[:code]}&bv=#{params[:bv]}&os=#{params[:os]}",
             version: @update.version || params[:bv],
             engineVersion: GameConfig.game_engine_version,
-            assets: {},
+            assets: assets,
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
-            shield: shield
+            shield: shield,
+            md5: @update.file_md5 || '',
+            packageSize: @update.package_file.size
           }
+          
         end # end update
         
         desc '获取游戏服务器信息'
