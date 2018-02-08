@@ -42,6 +42,33 @@ form fieldset > ol >li p.inline-hints {
       text-align: center;
     }
   }
+  
+  #game-data {
+    margin-top: 20px;
+    .game {
+      float: left;
+      padding: 30px;
+      border: 1px solid #ccc;
+      text-align: center;
+      border-radius: 8px;
+      margin-right: 15px;
+      margin-bottom: 15px;
+      color: #666;
+      h2, p {
+        margin: 0;
+        padding: 0;
+      }
+      h2 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: normal;
+      }
+      p {
+        font-size: 14px;
+      }
+    }
+    
+  } 
 }
 
 .dropzone{
