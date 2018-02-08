@@ -18,7 +18,7 @@
   window.GameService = {
     fetchData: function() {
       $.ajax({
-        url: "/api/v1/internal/game_data",
+        url: "http://172.31.181.80:8010/api/v1/internal/game_data",
         type: 'GET',
         success: function(re) {
           console.log(re);
