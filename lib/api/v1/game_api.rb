@@ -57,7 +57,7 @@ module API
           {
             packageUrl: @update.package_file.try(:url) || '',
             remoteManifestUrl: "http://47.104.163.199:8080/api/v1/game/update?code=#{params[:code]}&bv=#{params[:bv]}&os=#{params[:os]}",
-            version: @update.version || params[:bv],
+            version: @update.version || bv,
             engineVersion: GameConfig.game_engine_version,
             assets: assets,
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
