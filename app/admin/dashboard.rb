@@ -2,7 +2,7 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu priority: 1, label: "概况"
 
-  content title: "概况" do
+  content title: "控制面板" do
     # div class: "blank_slate_container", id: "dashboard_default_message" do
     #   span class: "blank_slate" do
     #     span I18n.t("active_admin.dashboard_welcome.welcome")
@@ -18,12 +18,12 @@ ActiveAdmin.register_page "Dashboard" do
     # 玩家统计
     columns do
       column do
-        panel "玩家统计" do
-          render 'admin/dashboard/player_stats'
+        panel "游戏统计" do
+          render 'admin/dashboard/game_stats'
         end
       end
     end
-    
+  
     # 充值统计
     
     # Here is an example of a simple dashboard with columns and panels.
@@ -46,4 +46,5 @@ ActiveAdmin.register_page "Dashboard" do
     #   end
     # end
   end # content
+  
 end

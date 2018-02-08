@@ -64,6 +64,18 @@ module API
         
       end # end resource
       
+      resource :internal, desc: '内部使用接口' do
+        desc '获取游戏数据'
+        get :game_data do
+          if client_ip != '127.0.0.1'
+            return render_error(4004, '无数据')
+          end
+          
+          result = GameService.fetch_data
+          result
+        end # end get game data
+      end # end resource
+      
     end # end class
   end
 end

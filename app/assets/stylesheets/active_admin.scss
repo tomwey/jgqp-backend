@@ -35,6 +35,15 @@ form fieldset > ol >li p.inline-hints {
   margin-left: 25%!important;
 }
 
+.game-status {
+  table {
+    border: 0;
+    td,th {
+      text-align: center;
+    }
+  }
+}
+
 .dropzone{
   border: dashed 1px #666;
   width: 600px;

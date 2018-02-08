@@ -1,0 +1,44 @@
+<div class="game-status">
+  <table>
+    <tbody>
+      <tr>
+        <th>在线玩家</th>
+        <th>总玩家</th>
+      </tr>
+      <tr>
+        <td id="online-players">0</td>
+        <td id="total-players">0</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  
+  window.GameService = {
+    fetchData: function() {
+      $.ajax({
+        url: "/api/v1/internal/game_data",
+        type: 'GET',
+        success: function(re) {
+          console.log(re);
+          var total = re.proxyinfo[0].playercount;
+          $('#online-players').text(total);
+          setTimeout(function() {
+            GameService.fetchData();
+          }, 2000);
+        },
+        error: function(err) {
+          console.log(err);
+          setTimeout(function() {
+            GameService.fetchData();
+          }, 2000);
+        }
+      });
+    },
+  };
+  
+  $(document).ready(function() {
+    GameService.fetchData();
+  });
+</script>
