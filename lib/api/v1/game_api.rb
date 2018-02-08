@@ -26,7 +26,11 @@ module API
             bv = prefix + '.' + suffix.to_s
           end
           
-          puts bv
+          # puts bv
+          shield = GameConfig.is_app_approving_version.to_i
+          if params[:os].downcase == 'android'
+            shield = 0
+          end
           
           @update = GameUpdate.where(game_id: game.id, opened: true)
             .where('version >= ? and lower(os) = ?', bv, params[:os].downcase)
@@ -43,7 +47,7 @@ module API
             engineVersion: GameConfig.game_engine_version,
             assets: {},
             searchPaths: @update.search_paths.gsub(/\s+/, ',').split(','),
-            shield: GameConfig.is_app_approving_version.to_i
+            shield: shield
           }
         end # end update
         
