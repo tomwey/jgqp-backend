@@ -27,7 +27,7 @@ module API
             
             suffix = t % 10
             prefix = bv / 100.0
-            prefix = '%.1f' % prefix.to_f
+            prefix = prefix.to_s[0,3]
             
             bv = prefix + '.' + suffix.to_s
           end
