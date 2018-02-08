@@ -19,14 +19,21 @@ module API
           bv = params[:bv]
           unless bv.include? '.'
             bv = bv.to_i
-            suffix = bv % 100
+            if bv < 100
+              t = bv
+            else
+              t = 100 - bv
+            end
+            
+            suffix = t % 10
             prefix = bv / 100.0
             prefix = '%.1f' % prefix
             
             bv = prefix + '.' + suffix.to_s
           end
           
-          # puts bv
+          puts bv
+          
           shield = GameConfig.is_app_approving_version.to_i
           if params[:os].downcase == 'android'
             shield = 0
