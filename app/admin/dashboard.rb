@@ -11,9 +11,20 @@ ActiveAdmin.register_page "Dashboard" do
     # end
     
     div class: "blank_slate_container" do
-      '您好，欢迎加入【年入百万俱乐部】！'
+      "您好，#{current_admin_user.email}，欢迎加入【年入百万俱乐部】！"
       # render "admin/dashboard/profile", owner: current_admin_user
     end
+    
+    # 玩家统计
+    columns do
+      column do
+        panel "玩家统计" do
+          render 'admin/dashboard/player_stats'
+        end
+      end
+    end
+    
+    # 充值统计
     
     # Here is an example of a simple dashboard with columns and panels.
     #
