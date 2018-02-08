@@ -22,12 +22,12 @@ module API
             if bv < 100
               t = bv
             else
-              t = 100 - bv
+              t = bv - 100
             end
             
             suffix = t % 10
             prefix = bv / 100.0
-            prefix = '%.1f' % prefix
+            prefix = '%.1f' % prefix.to_f
             
             bv = prefix + '.' + suffix.to_s
           end
