@@ -40,11 +40,11 @@ module API
           end
           
           @update = GameUpdate.where(game_id: game.id, opened: true)
-            .where('version >= ? and lower(os) = ?', bv, params[:os].downcase)
+            .where('version > ? and lower(os) = ?', bv, params[:os].downcase)
             .order('version desc').first
           
           if @update.blank?
-            return render_error(4004, '没有更新')
+            return [] # render_error(4004, '没有更新')
           end
           
           filename = File.basename(@update.package_file.path)
