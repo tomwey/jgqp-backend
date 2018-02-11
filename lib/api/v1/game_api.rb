@@ -51,7 +51,7 @@ module API
               engineVersion: GameConfig.game_engine_version,
               assets: {},
               searchPaths: ['src/','src/games/src/','res/','res/games/res/', 'res/protocol/'],
-              shield: 0,
+              shield: shield,
               md5: '',
               packageSize: 0,
               updateDesc: ''
