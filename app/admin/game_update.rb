@@ -17,6 +17,9 @@ index do
   selectable_column
   column :version
   column :os, sortable: false
+  column '所属游戏', sortable: false do |o|
+    o.game.try(:name)
+  end
   column :search_paths, sortable: false
   column :change_log, sortable: false do |o|
     raw(o.change_log)
