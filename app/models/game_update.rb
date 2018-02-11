@@ -1,6 +1,8 @@
 class GameUpdate < ActiveRecord::Base
   validates :game_id, :version, :os, :search_paths, presence: true
   
+  belongs_to :game
+  
   mount_uploader :package_file, AppFileUploader
   
   before_validation :update_data_attributes
