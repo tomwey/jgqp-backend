@@ -35,7 +35,7 @@ module API
           puts bv
           
           shield = GameConfig.is_app_approving_version.to_i
-          if params[:os].downcase == 'android'
+          if params[:os].downcase == 'android' or game.code == 'jgmj-test'
             shield = 0
           end
           
