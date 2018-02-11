@@ -44,7 +44,18 @@ module API
             .order('version desc').first
           
           if @update.blank?
-            return [] # render_error(4004, '没有更新')
+            return {
+              packageUrl: '',
+              remoteManifestUrl: "http://47.104.163.199:8080/api/v1/game/update?code=#{params[:code]}&bv=#{params[:bv]}&os=#{params[:os]}",
+              version: bv,
+              engineVersion: GameConfig.game_engine_version,
+              assets: {},
+              searchPaths: ['src/','src/games/src/','res/','res/games/res/', 'res/protocol/'],
+              shield: 0,
+              md5: '',
+              packageSize: 0,
+              updateDesc: ''
+            }
           end
           
           filename = File.basename(@update.package_file.path)
