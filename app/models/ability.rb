@@ -16,6 +16,7 @@ class Ability
       
       if user.marketer? or user.admin?
         can :create, GameRecharge
+        can :recharge, GameRecharge
       end
       
     end
