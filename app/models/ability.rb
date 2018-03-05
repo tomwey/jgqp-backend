@@ -14,9 +14,10 @@ class Ability
         admin.id == user.id
       end
       
-      if user.marketer?
+      if user.marketer? or user.admin?
         can :create, GameRecharge
       end
+      
     end
     
     # if user.super_admin?
