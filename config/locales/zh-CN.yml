@@ -42,6 +42,9 @@
       game: '游戏信息'
       game_update: '游戏更新'
       game_recharge: '游戏充值'
+      agent_user: '代理商'
+      agent_config: '代理配置'
+      agent_earn_bill: '分销流水'
     attributes:
       user:
         uid: 'ID'
@@ -102,6 +105,31 @@
         recharge_desc: '充值说明'
         recharge_man: '充值人'
         recharged_at: '充值时间'
+      agent_user:
+        uniq_id: 'ID'
+        name: '代理商名字'
+        mobile: '代理商手机'
+        address: '代理商地址'
+        parent_id: '父级代理商'
+        level: '代理商级别'
+        balance: '余额'
+        earnings: '总收入'
+        earn_ratio: '收入提成比例配置'
+        blocked_at: '禁用时间'
+        note: '备注'
+        created_at: '账号创建时间'
+      agent_config:
+        key: '配置名称'
+        value: '配置值'
+        description: '配置说明'
+      agent_earn_bill:
+        uniq_id: 'ID'
+        agent_user_id: '所属代理商'
+        money: '提成金额'
+        earn_ratio: '提成比例'
+        from_agent_user_id: '下级代理商'
+        uid: '用户ID'
+        created_at: '创建时间'
       attachment:
         data: '文件'
         uniq_id: 'ID'

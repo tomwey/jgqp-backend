@@ -10,6 +10,7 @@ ActiveAdmin.setup do |config|
     admin.build_menu do |menu|
       menu.add id: 'system',      label: '系统功能',        priority: 2
       menu.add id: 'game',        label: '游戏管理',        priority: 3
+      menu.add id: 'agent',       label: '分销系统',        priority: 4
       # menu.add id: 'users',       label: '用户系统',        priority: 3
       # menu.add id: 'publish',     label: '发布系统',        priority: 5
       # menu.add id: 'partin_logs', label: '广告数据统计',     priority: 6
