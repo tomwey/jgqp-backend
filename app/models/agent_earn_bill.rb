@@ -20,7 +20,7 @@ class AgentEarnBill < ActiveRecord::Base
   after_create :change_agent_users_earnings
   def change_agent_users_earnings
     if agent_user
-      val = (money / 100.0) * (earn_ratio / 100.0)
+      val = BigDecimal.new((money / 100.0).to_s) * BigDecimal.new((earn_ratio / 100.0).to_s)
       val = (val * 100).to_i
       agent_user.earnings += val
       agent_user.balance += val
