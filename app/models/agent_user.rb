@@ -41,7 +41,7 @@ class AgentUser < ActiveRecord::Base
     
     temp = []
     arr.each_with_index do |val, index|
-      if var.to_i != 0
+      if val.to_i != 0
         temp << "#{AgentUser::AGENT_LEVELs[index]}提成#{val}%"
       end
     end
