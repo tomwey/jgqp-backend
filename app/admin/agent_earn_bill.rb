@@ -26,7 +26,7 @@ index do
     link_to o.agent_user.try(:uniq_id), [:admin, o.agent_user]
   end
   column '来自代理', sortable: false do |o|
-    link_to o.from_agent_user.try(:uniq_id), [:admin, o.from_agent_user]
+    o.from_agent_user_id.blank? ? '' : link_to(o.from_agent_user.try(:uniq_id), [:admin, o.from_agent_user])
   end
   column :uid
   column :created_at
