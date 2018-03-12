@@ -34,7 +34,7 @@ index do
   
   column :mobile, sortable: false
   column '直接上级代理商', sortable: false do |o|
-    o.parent_id.blank? ? '' : link_to(o.parent.uniq_id, [:admin, o.parent])
+    o.parent_id.blank? ? '' : link_to(o.parent.name, [:admin, o.parent])
   end
   column :created_at
   
