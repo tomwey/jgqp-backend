@@ -54,6 +54,7 @@ form do |f|
   f.semantic_errors
   f.inputs '基本信息' do
     f.input :uid
+    f.input :agent_uid, as: :select, label: '代理商', collection: AgentUser.where(blocked_at: nil).map { |au| [au.name, au.id] }
     f.input :game_id, as: :select, collection: Game.all.map { |g| [g.name, g.id] }
     f.input :money_val, as: :number, label: '充值金额', placeholder: '单位为元'
     f.input :diamond

@@ -16,4 +16,16 @@ class AgentEarnBill < ActiveRecord::Base
     money /= 100.00
     '%.2f' % money
   end
+  
+  after_create :change_agent_users_earnings
+  def change_agent_users_earnings
+    if agent_user
+      val = (money / 100.0) * (earn_ratio / 100.0)
+      val = (val * 100).to_i
+      agent_user.earnings += val
+      agent_user.balance += val
+      agent_user.save!
+    end
+  end
+  
 end
