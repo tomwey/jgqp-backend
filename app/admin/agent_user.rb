@@ -17,18 +17,24 @@ index do
   selectable_column
   column :uniq_id, sortable: false
   column :name, sortable: false
-  column :level
+  column :level do |o|
+    AgentUser::AGENT_LEVELs[o.level]
+  end
   column :earnings do |o|
     o.format_money(o.earnings)
   end
+  
   column :balance do |o|
     o.format_money(o.balance)
   end
-  column :earn_ratio, sortable: false
+  
+  column :earn_ratio, sortable: false do |o|
+    o.format_earn_ratio
+  end
   
   column :mobile, sortable: false
   column '直接上级代理商', sortable: false do |o|
-    o.parent_id.blank? ? '' : link_to(o.parent.uniq_id, [:cpanel, o.parent])
+    o.parent_id.blank? ? '' : link_to(o.parent.uniq_id, [:admin, o.parent])
   end
   column :created_at
   

@@ -1,5 +1,9 @@
 class AgentEarnBill < ActiveRecord::Base
   validates :agent_user_id, :money, :earn_ratio, presence: true
+  
+  belongs_to :agent_user
+  belongs_to :from_agent_user, class_name: 'AgentUser', foreign_key: 'from_agent_user_id'
+  
   before_create :generate_uniq_id
   def generate_uniq_id
     begin

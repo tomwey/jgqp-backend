@@ -19,7 +19,7 @@ ActiveAdmin.register_page "Dashboard" do
     columns do
       column do
         panel "游戏统计" do
-          render 'admin/dashboard/game_stats'
+          render 'admin/dashboard/game_stats' if Rails.env.production?
         end
       end
     end

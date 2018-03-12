@@ -24,7 +24,12 @@
       player_count = proxy_info["playercount"]
       
       total_info = GameService.get_total_player
-      total = total_info['count']
+      
+      if total_info
+        total = total_info['count']
+      else
+        total = 0
+      end
       
       gsinfo = results["gsinfo"][0]
       gameinfo = gsinfo["gameinfo"]
