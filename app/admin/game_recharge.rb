@@ -3,7 +3,7 @@ ActiveAdmin.register GameRecharge do
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
 #
-permit_params :game_id, :uid, :money_val, :diamond, :recharge_desc
+permit_params :game_id, :uid, :money_val, :diamond, :recharge_desc, :agent_uid
 #
 # or
 #
