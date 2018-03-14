@@ -22,6 +22,9 @@ index do
   column :earn_ratio do |o|
     "#{o.earn_ratio}%"
   end
+  column '收益' do |o|
+    o.earn_money
+  end
   column '所属代理', sortable: false do |o|
     link_to o.agent_user.try(:uniq_id), [:admin, o.agent_user]
   end

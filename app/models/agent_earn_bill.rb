@@ -28,4 +28,9 @@ class AgentEarnBill < ActiveRecord::Base
     end
   end
   
+  def earn_money
+    val = BigDecimal.new((money / 100.0).to_s) * BigDecimal.new((earn_ratio / 100.0).to_s)
+    '%.2f' % val.to_f
+  end
+  
 end
